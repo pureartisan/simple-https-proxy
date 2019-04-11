@@ -1,4 +1,4 @@
-# https-proxy
+# simple-https-proxy
 
 Easy way to use HTTPS for local HTTP servers for testing.
 
