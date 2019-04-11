@@ -1,4 +1,4 @@
-# simple-https-proxy
+# simple-https-proxy ![npm (tag)](https://img.shields.io/npm/v/simple-https-proxy/latest.svg)
 
 Easy way to use HTTPS for local HTTP servers for testing.
 
