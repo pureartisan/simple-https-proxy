@@ -1,6 +1,6 @@
 {
   "name": "simple-https-proxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bin": {
     "simple-https-proxy": "./bin/simple-https-proxy"
   },
