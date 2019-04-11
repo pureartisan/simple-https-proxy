@@ -27,5 +27,5 @@ var commands = require('../index');
 if (argv.makeCerts) {
   (new commands.MakeCerts()).run();
 } else {
-  (new commands.Proxy()).run(argv.target, argv.port, argv.rewriteBodyUrls);
+  (new commands.Proxy()).run(argv.target, argv.host, argv.port, argv.rewriteBodyUrls);
 }

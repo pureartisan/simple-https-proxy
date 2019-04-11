@@ -4,6 +4,8 @@ var httpProxy = require('http-proxy');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 
+const REGEX_URL_EXTRACT = /^(https?\:\/\/)([^:\/]+)(\:(\d+))?\/?$/;
+
 const sslOptions = {
   key  : fs.readFileSync(path.join(ROOT_DIR, 'certs', 'server', 'local.key'), 'utf8'),
   cert : fs.readFileSync(path.join(ROOT_DIR, 'certs', 'server', 'local.cert'), 'utf8')
@@ -52,10 +54,33 @@ const rewriteLocationHeader = (originalHeaders, search, replacement) => {
   return headers;
 };
 
+const extractUrlData = (url) => {
+  const s = url || '';
+  let match = REGEX_URL_EXTRACT.exec(s);
+  if (match) {
+    return {
+      host: match[2],
+      port: match[4]
+    };
+  }
+  return {};
+};
+
+const buildRegexForRewrite = (target, port) => {
+  const targetParts = extractUrlData(target);
+  const targetHost = targetParts.host || 'localhost';
+  const targetPort = targetParts.port || '80';
+
+  const rgxPartTarget = escapeRegExp(`http://${targetHost}:${targetPort}`);
+  const rgxPartProxy = escapeRegExp(`http://${targetHost}:${port}`);
+
+  return new RegExp(`${rgxPartTarget}|${rgxPartProxy}`, 'g');
+};
+
 
 class Proxy {
 
-  run(target, port, rewriteBodyUrls) {
+  run(target, host, port, rewriteBodyUrls) {
 
     const proxy = httpProxy.createServer({
       target : target,
@@ -63,8 +88,9 @@ class Proxy {
       selfHandleResponse : true
     });
 
-    const search = new RegExp(escapeRegExp(`http://localhost:${port}`), 'g');
-    const replacement = `https://localhost:${port}`;
+    const hostReplacement = host || 'localhost';
+    const search = buildRegexForRewrite(target, port);
+    const replacement = `https://${hostReplacement}:${port}`;
 
     proxy.on('error', function (err, req, res) {
       // do nothing
@@ -91,7 +117,7 @@ class Proxy {
     });
 
     proxy.listen(port);
-    console.log('Proxing to "%s" through "https://localhost:%s"', target, port);
+    console.log(`Proxing to "${target}" through "https://${host}:${port}"`);
 
   }
 
