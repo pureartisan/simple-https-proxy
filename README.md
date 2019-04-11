@@ -1,4 +1,4 @@
-# simple-https-proxy [![npm version](https://badge.fury.io/js/simple-https-proxy.svg)](https://badge.fury.io/js/simple-https-proxy)
+# simple-https-proxy [![npm version](https://img.shields.io/npm/v/simple-https-proxy/latest.svg)](hhttps://www.npmjs.com/package/simple-https-proxy)
 
 Easy way to use HTTPS for local HTTP servers for testing.
 
