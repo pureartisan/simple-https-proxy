@@ -1,0 +1,23 @@
+{
+  "name": "simple-https-proxy",
+  "version": "1.0.0",
+  "bin": {
+    "simple-https-proxy": "./bin/simple-https-proxy"
+  },
+  "description": "Easy proxy for HTTPS testing for HTTP servers",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prageeth/simple-https-proxy.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "http-proxy": "^1.8.1",
+    "optimist": "^0.6.1",
+    "shelljs": "^0.8.3"
+  }
+}

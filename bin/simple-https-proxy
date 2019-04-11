@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+var buildUsage = (appName) => {
+  return `
+  Usage: ${appName} <options>
+    [--makeCerts=false]
+    [--target=http://localhost:5555]
+    [--host=localhost]
+    [--port=3001]
+    [--rewriteBodyUrls=false]
+  `.trim();
+};
+
+var argv = require('optimist')
+  .usage(buildUsage("$0"))
+  .default({
+    makeCerts: false,
+    target : 'http://localhost:5555',
+    host   : 'localhost',
+    port   : 3001,
+    rewriteBodyUrls: false
+  })
+  .argv;
+
+var commands = require('../index');
+
+if (argv.makeCerts) {
+  (new commands.MakeCerts()).run();
+} else {
+  (new commands.Proxy()).run(argv.target, argv.port, argv.rewriteBodyUrls);
+}
