@@ -2,7 +2,7 @@
 
 Easy way to use HTTPS for local HTTP servers for testing.
 
-Adoptation of [https-proxy](https://github.com/yavorskiy/https-proxy)
+Adaptation of [https-proxy](https://github.com/yavorskiy/https-proxy)
 
 ## Install globally
 
@@ -21,6 +21,9 @@ simple-https-proxy --makeCerts=true
 ```
 simple-https-proxy [--target=http://localhost:5555] [--host=localhost] [--port=3001] [--rewriteBodyUrls=false]
 ```
+e.g.
+```
+simple-https-proxy --target=http://localhost:5555 --host=localhost --port=3001 --rewriteBodyUrls=false
+```
 
 Go to [https://localhost:3001](https://localhost:3001)
-

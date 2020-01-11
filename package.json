@@ -4,7 +4,7 @@
   "bin": {
     "simple-https-proxy": "./bin/simple-https-proxy"
   },
-  "description": "Easy proxy for HTTPS testing for HTTP servers",
+  "description": "Easy proxy for HTTPS testing for HTTP servers locally",
   "author": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prageeth/simple-https-proxy.git"
+    "url": "https://github.com/pureartisan/simple-https-proxy.git"
   },
   "license": "MIT",
   "dependencies": {

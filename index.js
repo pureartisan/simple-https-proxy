@@ -1,5 +1,5 @@
-var MakeCerts        = require('./commands/make-certs');
-var Proxy        = require('./commands/proxy');
+var MakeCerts       = require('./commands/make-certs');
+var Proxy           = require('./commands/proxy');
 
 module.exports = {
   Proxy: Proxy,
