@@ -5,7 +5,7 @@
     "simple-https-proxy": "./bin/simple-https-proxy"
   },
   "description": "Easy proxy for HTTPS testing for HTTP servers locally",
-  "author": "",
+  "author": "Prageeth Silva <contact@prageethsilva.com>",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
